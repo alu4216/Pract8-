@@ -11,33 +11,35 @@ attr_reader :col, :fil
 	    @col=arg[1]
 	    
 	   if(arg.size==3)	 
-	   @obj=Array.new(@fil, Array.new(@col,arg[2])) #matriz con el mismo numero en todas sus posiciones.
-           end		
+	  @obj=Array.new(@fil, Array.new(@col,arg[2])) #matriz con el mismo numero en todas sus posiciones.
+	  end		
 	end
 
       def [](i)
          @obj[i]
       end
 
+      def []=(i,j,value)
+	@obj[i][j]=value
+      end
+
       def ==(o)
-         raise TypeError unless ((@fil==o.fil) && (@col==o.col))
 
             for i in (0...@fil)
                 for j in (0...@col)
-                        if (self[i][j] != o.obj[i][j])
+                        if (self[i][j] != o[i][j])
                                 return false
                         end
                  end
             end
         end
-
 	def +(o)
 	raise TypeError unless ((@fil==o.fil) && (@col==o.col))
 	 
-	operacion= Matrix.new(@fil,@col)
+	operacion= Matrix.new(@fil,@col,0)
 	 for i in (0...@fil)
 	     for j in(0...@col)
-	  	operacion[i][j]=self[i][j]+o.obj[i][j]
+	  	operacion[i][j]=self[i][j]+o[i][j]
 	     end
 	 end
 	return operacion
@@ -46,7 +48,7 @@ attr_reader :col, :fil
        def * (o) 
 	raise TypeError unless (@fil==o.col)
 	
-	operacion= Matrix.new(@fil,@col)
+	operacion= Matrix.new(@fil,@col,0)
 	for i in (0...@fil)
              for j in(0...@col)
 		suma=self[i][0]*o[0][j]
@@ -58,6 +60,4 @@ attr_reader :col, :fil
 	end	
 	operacion	
       end
-end	
-
-
+end

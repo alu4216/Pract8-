@@ -10,9 +10,8 @@ before :each do
    it "Se deberia poder sumar dos matrices de enteros" do
 	 
 	(Matrix.new(3,2,4)+Matrix.new(3,2,4)).should==Matrix.new(3,2,8)
-	#@obj_1+@obj_2=Matrix.new(3,2,5)
    end
-=begin 
+ 
   it "Se deberia poder sumar dos matrices de racionales" do
 	(Matrix.new(3, 2, Fraccion.new(1, 2)) + Matrix.new(3, 2, Fraccion.new(1, 6))).should == Matrix.new(3, 2, Fraccion.new(8, 12))
   end
@@ -20,7 +19,7 @@ before :each do
 	(Matrix.new(3, 2, 2) * Matrix.new(2, 3, 3)).should == Matrix.new(3, 3, 12)
   end 
   it "Se debe poder multiplicar dos matrices de Racionales" do
-     (Matrix.new(3, 2, Fraction.new(1, 2)) * Matrix.new(2, 3, Fraction.new(3, 5))).should == Matrix.new(3, 3, Fraction.new(6, 10))
+     (Matrix.new(3, 2, Fraccion.new(1, 2)) * Matrix.new(2, 3, Fraccion.new(3, 5))).should == Matrix.new(3, 3, Fraccion.new(6, 10))
   end
-=end 
+
 end
